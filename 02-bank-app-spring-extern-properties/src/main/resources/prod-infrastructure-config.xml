@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<!--<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" p:location="db-prod.properties"/>  -->
+	<!-- shortcut for property configurer -->
+	<context:property-placeholder location="db-prod.properties"/>
+	
+	<!-- <context:property-placeholder location="classpath:db-${myenv}.properties"/> Pass myenv can be sent to VM args as -Dmyenv=test -->
+
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+  	p:driverClassName="${db.driverclassname}" p:url="${db.url}"
+  	p:username="${db.user}" p:password="${db.password}" />
+		
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:dbscripts.sql"/>
+	</jdbc:initialize-database>  
+	
+
+</beans>
