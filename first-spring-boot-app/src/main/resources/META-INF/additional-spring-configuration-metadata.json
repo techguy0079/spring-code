@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "course.name",
+    "type": "java.lang.String",
+    "description": "A description for 'course.name'"
+  },
+  {
+    "name": "course.chapterCount",
+    "type": "java.lang.Integer",
+    "description": "A description for 'course.chapterCount'"
+  },
+  {
+    "name": "course.rating",
+    "type": "java.lang.Integer",
+    "description": "A description for 'course.rating'"
+  },
+  {
+    "name": "course.author",
+    "type": "java.lang.String",
+    "description": "A description for 'course.author'"
+  } 
+]}
